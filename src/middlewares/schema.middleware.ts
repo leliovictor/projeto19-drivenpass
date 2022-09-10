@@ -3,7 +3,7 @@ import { ObjectSchema } from "joi";
 
 import { AppError } from "./error.handler.middleware.js";
 
-export default function validateSchemaMiddleware(schema: ObjectSchema) {
+export function validateSchemaMiddleware(schema: ObjectSchema) {
   return (req: Request, res: Response, next: NextFunction) => {
     const body = req.body;
     const { error } = schema.validate(body, { abortEarly: false });
