@@ -40,10 +40,7 @@ export async function findUser(email: string) {
   return user;
 }
 
-export function comparePassword(
-  bodyPassword: string,
-  userPassword: string
-) {
+export function comparePassword(bodyPassword: string, userPassword: string) {
   const valid = bcrypt.compareSync(bodyPassword, userPassword);
 
   if (!valid) {
@@ -56,14 +53,13 @@ export function comparePassword(
 }
 
 function createToken(id: number) {
-    const TIME_60M = 60 * 60;
+  const TIME_60M = 60 * 60;
   const secretKey = process.env.JWT_SECRET;
-  const data = { id };
+  const data = { userId: id };
 
   const token = jwt.sign(data, secretKey, { expiresIn: TIME_60M });
 
-
-    return token;
+  return token;
 }
 
 export async function loginUser(body: Auth) {
@@ -72,5 +68,5 @@ export async function loginUser(body: Auth) {
 
   const token = createToken(user.id);
 
-  return token;;
+  return token;
 }

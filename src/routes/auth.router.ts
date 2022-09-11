@@ -10,6 +10,6 @@ const authRouter = Router();
 
 authRouter.post("/login", validateSchemaMiddleware(schema.auth),controller.postLogin);
 
-authRouter.post("/signup", validateSchemaMiddleware(schema.auth), controller.postSignup)
+authRouter.post("/signup", validateSchemaMiddleware(schema.auth), controller.postSignup);
 
 export default authRouter;
