@@ -18,3 +18,15 @@ export async function findFirstByTitleUserId(
 export async function registerCredential(data: Credential) {
   return await prisma.credential.create({ data });
 }
+
+export async function findById(id: number) {
+    return await prisma.credential.findUnique({where: {id}});
+}
+
+export async function findManyByUserId(userId: number) {
+  return await prisma.credential.findMany({where: {userId}});
+}
+
+export async function deleteById(id: number) {
+  return await prisma.credential.delete({where: {id}});
+}

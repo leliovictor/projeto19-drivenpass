@@ -10,3 +10,8 @@ export type Credential = {
   username: string,
   password: string,
 };
+
+export type FindCredential = {
+  userId: number,
+  credentialId: string
+}

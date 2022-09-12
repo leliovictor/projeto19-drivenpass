@@ -11,4 +11,8 @@ const credentialRouter = Router();
 
 credentialRouter.post("/credentials", validateSchemaMiddleware(schema.credential), checkAuthentication, controller.postCredential);
 
+credentialRouter.get("/credentials/:id", checkAuthentication, controller.getById);
+credentialRouter.get("/credentials", checkAuthentication, controller.getCredentials);
+credentialRouter.delete("/credentials/:id", checkAuthentication, controller.deleteCredential);
+
 export default credentialRouter;
