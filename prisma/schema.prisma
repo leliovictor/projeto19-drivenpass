@@ -17,6 +17,8 @@ model User {
 
   credential Credential[]
   note       Note[]
+  card       Card[]
+  network    Network[]
 
   @@map("users")
 }
@@ -41,4 +43,37 @@ model Note {
   note   String
 
   @@map("notes")
+}
+
+enum Card_Type {
+  credit
+  debit
+  both
+}
+
+model Card {
+  id              Int       @unique @default(autoincrement())
+  title           String
+  card_number     String
+  name_in_card    String
+  cvc             String
+  expiration_date String
+  password        String
+  isVirtual       Boolean
+  type            Card_Type
+  user            User      @relation(fields: [userId], references: [id])
+  userId          Int
+
+  @@map("cards")
+}
+
+model Network {
+  id       Int    @unique @default(autoincrement())
+  name     String
+  password String
+  title    String
+  user     User   @relation(fields: [userId], references: [id])
+  userId   Int
+
+  @@map("networks")
 }

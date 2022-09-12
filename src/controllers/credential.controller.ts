@@ -12,20 +12,20 @@ export async function postCredential(_req: Request, res: Response) {
 }
 
 export async function getById(req: Request, res: Response) {
-    const { userId } = res.locals.data;
-    const {id: credentialId} = req.params;
+  const { userId } = res.locals.data;
+  const {id: credentialId} = req.params;
 
-    const credential = await service.getCredentialById({userId, credentialId});
+  const credential = await service.getCredentialById({userId, credentialId});
 
-    return res.status(200).send(credential);
+  return res.status(200).send(credential);
 }
 
 export async function getCredentials(_req: Request, res: Response) {
-    const { userId } = res.locals.data;
+  const { userId } = res.locals.data;
 
-    const credentials = await service.getUserCredentials(userId);
+  const credentials = await service.getUserCredentials(userId);
 
-    return res.status(200).send(credentials);
+  return res.status(200).send(credentials);
 }
 
 export async function deleteCredential(req: Request, res: Response) {

@@ -1,9 +1,9 @@
 import { prisma } from "../config/database.js";
 
-import { Credential } from "../types/types.js";
+import { CredentialParams } from "../types/types.js";
 
 export async function findFirstByTitleUserId(
-  data: Omit<Credential, "username" | "password" | "url">
+  data: Omit<CredentialParams, "username" | "password" | "url">
 ) {
   const { userId, title } = data;
   const select = await prisma.credential.findFirst({
@@ -15,7 +15,7 @@ export async function findFirstByTitleUserId(
   return select;
 }
 
-export async function registerCredential(data: Credential) {
+export async function registerCredential(data: CredentialParams) {
   return await prisma.credential.create({ data });
 }
 

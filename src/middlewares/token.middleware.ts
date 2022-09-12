@@ -4,7 +4,7 @@ import { AppError } from "../middlewares/error.handler.middleware.js";
 
 import jwt from "jsonwebtoken";
 
-export async function checkAuthentication(
+export async function validateToken(
   req: Request,
   res: Response,
   next: NextFunction
